@@ -1,6 +1,12 @@
 # MoreTorque
 
-> Backend for Motorq
+> Backend assignment for Motorq
+
+## Dependencies
+
+### MongoDB
+
+### Node.js
 
 ## Dependencies
 
