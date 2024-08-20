@@ -12,7 +12,7 @@ const limiter = rateLimit({
 
 router.get("/decode/:vin", limiter, vehicleController.decodeVin);
 router.get("/", vehicleController.getVehicles);
-router.get("/:vin", vehicleController.getVehicles);
+router.get("/:vin", vehicleController.getVehicle);
 router.post("/", vehicleController.createVehicle);
 
 module.exports = router;

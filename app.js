@@ -32,4 +32,11 @@ app.get("/", (req, res) => {
   });
 });
 
+app.get("*", (req, res, next) => {
+  res.status(404).json({
+    status: "fail",
+    message: "404 Not Found",
+  });
+});
+
 module.exports = app;

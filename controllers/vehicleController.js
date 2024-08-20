@@ -88,6 +88,7 @@ exports.getVehicles = async (req, res, next) => {
 exports.getVehicle = async (req, res, next) => {
   try {
     const vehicle = await Vehicle.findById(req.params.vin).populate("org");
+
     res.status(200).json({
       status: "success",
       data: {
