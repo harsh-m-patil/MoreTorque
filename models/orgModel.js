@@ -5,6 +5,7 @@ const orgSchema = new mongoose.Schema(
   {
     name: {
       type: String,
+      trim: true,
       required: [true, "Organization name is required"],
       unique: [true, "This organization name is already in use"],
       minLength: [4, "OrgName can be minimum of 4 length"],

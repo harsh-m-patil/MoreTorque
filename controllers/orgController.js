@@ -79,3 +79,31 @@ exports.getOrg = async (req, res, next) => {
     });
   }
 };
+
+exports.updateOrg = async (req, res, next) => {
+  try {
+    const updatedOrg = await Org.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+      runValidators: true,
+    });
+
+    if (!updatedOrg) {
+      return res.status(404).json({
+        status: "fail",
+        message: "No Org with that id found",
+      });
+    }
+
+    res.status(200).json({
+      status: "success",
+      data: {
+        updatedOrg,
+      },
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: "fail",
+      message: "Error updating Org",
+    });
+  }
+};
