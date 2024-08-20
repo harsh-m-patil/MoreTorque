@@ -2,6 +2,12 @@
 
 > Backend for Motorq
 
+## Dependencies
+
+### MongoDB
+
+### Node.js
+
 ## Clone Repository
 
 ```bash
