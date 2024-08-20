@@ -63,7 +63,9 @@ exports.getOrgs = async (req, res, next) => {
 
 exports.getOrg = async (req, res, next) => {
   try {
-    const org = await Org.findById(req.params.id).populate("parentOrg");
+    const org = await Org.findById(req.params.id)
+      .populate("parentOrg")
+      .populate("childrenOrgs");
     res.status(200).json({
       status: "success",
       data: {
