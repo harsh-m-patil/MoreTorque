@@ -139,7 +139,6 @@ exports.updateOrg = async (req, res) => {
     if (updates.speedLimitPolicy) {
       org.speedLimitPolicy = updates.speedLimitPolicy;
     }
-
     if (updates.account) org.account = updates.account;
     if (updates.website) org.website = updates.website;
 

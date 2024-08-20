@@ -19,7 +19,7 @@ const limiter = rateLimit({
   max: 100,
   windowMs: 60 * 60 * 1000,
   message: "Too many requests from this IP! Try again in an hour",
-  keyGenerator: (req, res) => req.headers["x-client-id"],
+  //keyGenerator: (req, res) => req.headers["x-client-id"],
 });
 
 app.use(limiter);
