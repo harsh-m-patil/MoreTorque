@@ -1,4 +1,5 @@
 const Org = require("../models/orgModel");
+const APIFeatures = require("../utils/APIFeatures");
 
 exports.createOrg = async (req, res, next) => {
   try {
@@ -28,9 +29,16 @@ exports.createOrg = async (req, res, next) => {
 
 exports.getOrgs = async (req, res, next) => {
   try {
-    const orgs = await Org.find().populate("parentOrg");
+    const features = new APIFeatures(Org.find(), req.query)
+      .filter()
+      .sort()
+      .limitFields()
+      .paginate();
+    const orgs = await features.query.populate("parentOrg");
+
     res.status(200).json({
       status: "success",
+      results: orgs.length,
       data: {
         orgs,
       },

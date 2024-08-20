@@ -17,6 +17,10 @@ const VehicleSchema = new mongoose.Schema({
     ref: "Org",
     required: [true, "Organization is required"],
   },
+  createdAt: {
+    type: Date,
+    default: Date.now(),
+  },
 });
 
 const Vehicle = mongoose.model("Vehicle", VehicleSchema);

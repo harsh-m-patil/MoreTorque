@@ -27,6 +27,10 @@ const orgSchema = new mongoose.Schema({
     type: String,
     required: [true, "Speed limit policy is required"],
   },
+  createdAt: {
+    type: Date,
+    default: Date.now(),
+  },
   //childrenOrgs: [
   //  {
   //    type: mongoose.Schema.Types.ObjectId,

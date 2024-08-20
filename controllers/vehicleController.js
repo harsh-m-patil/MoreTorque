@@ -1,6 +1,7 @@
 const axios = require("axios");
 const Vehicle = require("../models/vehicleModel");
 const Org = require("../models/orgModel");
+const APIFeatures = require("../utils/APIFeatures");
 
 exports.decodeVin = async (req, res, next) => {
   const { vin } = req.params;
@@ -63,7 +64,13 @@ exports.createVehicle = async (req, res, next) => {
 
 exports.getVehicles = async (req, res, next) => {
   try {
-    const vehicles = await Vehicle.find().populate("org");
+    const features = new APIFeatures(Vehicle.find(), req.query)
+      .filter()
+      .sort()
+      .limitFields()
+      .paginate();
+
+    const vehicles = await features.query.populate("org");
     res.status(200).json({
       status: "success",
       data: {
