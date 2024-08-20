@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const validator = require("validator");
 
 const orgSchema = new mongoose.Schema({
   name: {
@@ -18,6 +19,7 @@ const orgSchema = new mongoose.Schema({
   },
   website: {
     type: String,
+    validate: [validator.isURL, "invalid URL"],
   },
   fuelReimbursementPolicy: {
     type: String,

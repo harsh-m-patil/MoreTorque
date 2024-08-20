@@ -1,3 +1,4 @@
+const validator = require("validator");
 const Org = require("../models/orgModel");
 const APIFeatures = require("../utils/APIFeatures");
 
@@ -9,6 +10,15 @@ exports.createOrg = async (req, res, next) => {
         return res.status(404).json({
           status: "fail",
           message: "Parent organization not found",
+        });
+      }
+    }
+
+    if (req.body.website) {
+      if (!validator.isURL(req.body.website)) {
+        return res.status(400).json({
+          status: "fail",
+          message: "Invalid URL",
         });
       }
     }
